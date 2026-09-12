@@ -34,7 +34,7 @@ exec python -m sglang.launch_server \
   --speculative-adaptive --speculative-adaptive-config "${ADAPTIVE_SPEC:-$HERE/adaptive_spec.json}" \
   --mamba-track-interval 64 \
   --mm-attention-backend triton_attn \
-  --enable-multimodal --enable-metrics --media-url-max-file-size-mb 1024 \
+  --enable-cache-report --enable-multimodal --enable-metrics --media-url-max-file-size-mb 1024 \
   --reasoning-parser glm45 --tool-call-parser glm47 \
   ${EXTRA_ARGS:-} \
   --api-key "$KEY" --host 0.0.0.0 --port "${PORT:-8000}"

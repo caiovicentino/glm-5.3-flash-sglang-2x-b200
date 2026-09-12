@@ -60,10 +60,10 @@ verify graphs). Warm the server before measuring: the first request of each new 
 | KV pool | 1.85 M tokens | 4.9 M tokens |
 
 Functional gates (`bench/gates.py`): API, tool calling, thinking on/off (the "opencode form"), vision
-(solid colour, text in image, shapes) and 8-stream concurrency pass. Two gates report false negatives on
-this build: `usage.prompt_tokens_details.cached_tokens` is not populated even though the prefix cache
-works (server metrics: 8,064 of 17,675 prompt tokens served from cache), and the strict string match of
-the shapes gate rejects a correct answer. One gate is a budget effect, not a defect: with the template's
+(solid colour, text in image, shapes), prefix-cache reporting and 8-stream concurrency pass. Note
+`--enable-cache-report` in `serve.sh`: without it `usage.prompt_tokens_details.cached_tokens` stays at 0
+even though the radix prefix cache works (with it, a repeated 8k-token system prompt reports 99 % cached).
+One gate is a false negative: the strict string match of the shapes gate rejects a correct answer. One gate is a budget effect, not a defect: with the template's
 default `reasoning_effort` (max) the model spends 6,000–8,000 tokens reasoning about an essay prompt
 before writing — coherent, no repetition, just long. Send `reasoning_effort: high` (or `low`) from the
 client; see the sibling recipe's `docs/reasoning-effort.md`.
