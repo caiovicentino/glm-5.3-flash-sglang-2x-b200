@@ -5,6 +5,8 @@ vision, DSA sparse attention, NextN speculative decoding) on a **pair of B200** 
 NVLink) with SGLang, and the numbers it produced next to our production box, a 4× RTX PRO 6000
 (SM120, PCIe) running the same checkpoint with the sibling recipe
 [glm-5.3-flash-sglang-4x-rtx-pro-6000](https://github.com/caiovicentino/glm-5.3-flash-sglang-4x-rtx-pro-6000).
+The four-card follow-up, tuned for 64–128 streams, is
+[glm-5.3-flash-sglang-4x-b200](https://github.com/caiovicentino/glm-5.3-flash-sglang-4x-b200).
 
 Short version: same model, same image, same client-facing behaviour, and the B200 pair is **2× faster
 for one user, 2.3× at 8 concurrent requests, 4.5× at 24, with 3× the prefill rate**, at about twice
